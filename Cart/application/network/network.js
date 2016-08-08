@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 
 export function call(url, method, params, callback) {
-  console.log("url:" + url + " method:" + method + "params:" + params);
-  let formData = new FormData()
-  for(var [key, value] of params) {
-    formData.append(key, value)
+  var str = ''
+  var index = 0
+  console.log("url: " + url + " method: " + method);
+  for(var p of params) {
+    console.log(p);
+    str += p[0] + '=' + p[1]
+    if(index < (params.size - 1)) {
+      str += '&'
+      index++
+    }
   }
   fetch(url, {
     method: method,
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'multipart/form-data; boundary=6ff46e0b6b5148d984f148b6542e5a5d'
+      'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
     },
-    body: formData
+    body: str
   }).then(response => {
     return response.json()
   }).then(responseJson => {
