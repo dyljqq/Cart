@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import LeftIcon from './left_icon.js'
 import Util from './util.js'
+import ActionSheet from './action_sheet.js'
 
 class Header extends Component {
   constructor(props) {
@@ -24,6 +25,13 @@ class Header extends Component {
         <View style={[styles.title, styles.center]}>
           <Text style={[styles.font, styles.titlePos, {textAlign: 'center'}]} numberOfLines={1}>{obj.title}</Text>
         </View>
+        {
+          this.props.showActionSheet ?
+          <View>
+            <ActionSheet data={this.props.data} />
+          </View>
+          : null
+        }
       </View>
     )
   }
@@ -57,7 +65,7 @@ var styles = {
   center:{
     justifyContent:'center',
     alignItems:'center'
-  }
+  },
 };
 
 export default Header

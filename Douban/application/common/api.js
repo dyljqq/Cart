@@ -1,5 +1,6 @@
 
 const prefix = 'https://api.douban.com/v2/'
+const PREFIX = 'http://127.0.0.1:8089/api/'
 
 // book_search: 'https://api.douban.com/v2/book/search',
 // //图书详情
@@ -15,7 +16,9 @@ const prefix = 'https://api.douban.com/v2/'
 export default {
   book: {
     search: prefix + 'book/search',
-    search_id: prefix + 'book'
+    search_id: prefix + 'book',
+    add: PREFIX + 'v1/book/add',
+    query: PREFIX + 'v1/book/query'
   },
   music: {
     search: prefix + 'music/search',
@@ -24,5 +27,24 @@ export default {
   movie: {
     search: prefix + 'movie/search',
     search_id: prefix + 'movie/subject/'
-  }
+  },
+  mine: {
+   login: {
+     url: PREFIX + 'v1/user/login',
+     type: 'post'
+   },
+   registe: {
+     url: PREFIX + 'v1/user/register',
+     type: 'post'
+   },
+   forget_password: {
+     url: PREFIX + 'v1/user/forgetPassword',
+     type: 'post'
+   },
+   logout: {
+     url: PREFIX + 'v1/user/logout',
+     type: 'post'
+   }
+ },
+
 }

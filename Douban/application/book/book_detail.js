@@ -26,6 +26,8 @@ class BookDetail extends Component {
       <View style={{flex: 1, backgroundColor: '#F1F2F3'}}>
         <Header
           navigator={this.props.navigator}
+          data={this.state.data}
+          showActionSheet={true}
           obj={{backName: '图书',
                 title: this.state.data ? this.state.data.title : ''
               }} />

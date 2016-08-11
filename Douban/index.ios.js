@@ -11,10 +11,11 @@ import {  AppRegistry,
           Text,
           TabBarIOS} from 'react-native'
 import App from './src/views/App'
-import Navigation from './nearby/common/navigation.js'
-import Book from './nearby/book/book.js'
-import MusicList from './nearby/music/music.js'
-import MovieList from './nearby/movie/movie.js'
+import Navigation from './application/common/navigation.js'
+import Book from './application/book/book.js'
+import MusicList from './application/music/music.js'
+import MovieList from './application/movie/movie.js'
+import Mine from './application/mine/mine.js'
 
 class AwesomeProject extends Component {
   constructor(props) {
@@ -59,6 +60,17 @@ class AwesomeProject extends Component {
             })
           }}>
           <Navigation component={MusicList} />
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          title="我的"
+          selected={this.state.selectedTap == '我的'}
+          icon={require('image!user_unselect')}
+          onPress={()=> {
+            this.setState({
+              selectedTap: '我的'
+            })
+          }}>
+          <Navigation component={Mine} />
         </TabBarIOS.Item>
       </TabBarIOS>
     );

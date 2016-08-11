@@ -1,5 +1,3 @@
-<Header
-  navigator={this.props.navigator}
-  obj={{backName: '图书',
-        title: this.state.data ? this.state.data.title : ''
-      }} />
+CardTab
+Red cell
+stockcell
