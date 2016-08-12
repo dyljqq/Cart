@@ -15,11 +15,12 @@ export default class SureButton extends Component {
   }
 
   buttonClicked(api) {
-    if (!this.props.verify()) {
-      return ;
+    for(var key of Object.keys(this.props)) {
+      if (key == 'verify' && !this.props.verify()) {
+        return ;
+      }
     }
     var params = new Map()
-    console.log(api);
     for(var key of Object.keys(api)) {
       if (!(key == 'inf' || key == 'verify')) {
         params.set(key, api[key])
@@ -33,6 +34,8 @@ export default class SureButton extends Component {
       }else {
         alert(message)
       }
+    }, (err)=> {
+      console.log(err);
     })
   }
 

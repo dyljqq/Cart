@@ -1,4 +1,5 @@
 import React from 'react'
+import Global from './global.js'
 
 export function get (url, successCallback, failureCallback) {
   console.log('url:' + url);
@@ -15,7 +16,7 @@ export function get (url, successCallback, failureCallback) {
 
 export function post(url, params, successCallback, failureCallback) {
   console.log('url:' + url)
-  console.log('params:' + params);;
+  console.log('params:' + params);
   var str = []
   if (params instanceof Map) {
     for(var p of params) {
@@ -27,8 +28,13 @@ export function post(url, params, successCallback, failureCallback) {
     }
   }
 
-  const body = str.join("&");
-  console.log('suffix: ' + str);
+  if(Global.user && Global.user.sid) {
+    str.push('sid=' + Global.user.sid)
+    str.push('uid=' + Global.user.uid)
+  }
+
+  const body = str.join('&');
+  console.log('suffix: ' + body);
   fetch(url, {
    method: 'POST',
    headers: {
@@ -39,6 +45,10 @@ export function post(url, params, successCallback, failureCallback) {
   }).then(response => {
    return response.json()
   }).then(responseJson => {
+   if(responseJson.code == 10000 || responseJson.code == -1) {
+     alert('请登陆')
+     return ;
+   }
    successCallback(responseJson.code, responseJson.message, responseJson.data)
  }).catch(err => {
    failureCallback(err)

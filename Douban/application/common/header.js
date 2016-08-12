@@ -59,7 +59,7 @@ var styles = {
     flex:1
   },
   titlePos:{
-    marginLeft:-20,
+    marginLeft:-50,
     width:200,
   },
   center:{

@@ -3,7 +3,8 @@ import { AppRegistry,
          View,
          Text,
          StyleSheet,
-         Image} from 'react-native'
+         Image,
+         TouchableOpacity} from 'react-native'
 import * as Images from './images'
 
 class SimpleItem extends Component {
@@ -11,15 +12,25 @@ class SimpleItem extends Component {
     var imageName = this.props.imageName;
     return (
       <View style={[styles.row, this.props.style, {backgroundColor: 'white', height: 40}]}>
-        <View>
-          {Images.getImage(imageName, styles.image)}
-        </View>
-        <View style={styles.center}>
-          <Text>{this.props.content}</Text>
-        </View>
+        <TouchableOpacity onPress={this.press.bind(this)} style={{flex: 1, flexDirection: 'row'}}>
+          <View>
+            {Images.getImage(imageName, styles.image)}
+          </View>
+          <View style={styles.center}>
+            <Text>{this.props.content}</Text>
+          </View>
+          <View style={{justifyContent: 'center', alignItems: 'flex-end', flex: 1}}>
+            <Image source={require('image!back')} style={{marginRight: 15}}/>
+          </View>
+        </TouchableOpacity>
       </View>
     )
   }
+
+  press() {
+    this.props.onPress(this.props.num)
+  }
+
 }
 
 const styles = {

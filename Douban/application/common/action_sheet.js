@@ -50,10 +50,12 @@ class ActionSheet extends Component {
   _collect() {
     let url = Api.book.add
     let row = this.props.data
+    var price = this.handleNumber(row.price)
+    console.log('price:' + price);
     var map = {
       'name': row.title,
       'author': row.author.length > 0 ? row.author[0] : '',
-      'price': row.price ? row.price : 0,
+      'price': price,
       'rate': row.rating.average ? row.rating.average : 0,
       'image': row.image,
       'desc': ''
@@ -69,6 +71,17 @@ class ActionSheet extends Component {
       alert(err)
     })
   }
+
+  handleNumber(str) {
+    var num = ''
+    for(let ch of str) {
+      if (ch >= '0' && ch <= '9') {
+        num += ch
+      }
+    }
+    return num ? Number.parseInt(num) : 0
+  }
+
 }
 
 export default ActionSheet

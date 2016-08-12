@@ -13,76 +13,53 @@ import * as Network from '../common/network.js'
 import Api from '../common/api.js'
 import Util from '../common/util.js'
 import SimpleItem from '../weidget/simple_item.js'
+import Account from './account.js'
+import Global from '../common/global.js'
+import MyCollection from './my_collection.js'
 
 class Mine extends Component {
   constructor(props) {
     super(props)
-    this.onButtonChanged = this.onButtonChanged.bind(this)
     this.state = {
       isLogin: false,
       user: {},
-      inf: Api.mine.logout,
+      content: '请登陆'
     }
   }
 
-  verify() {
-    var isLogin = this.state.isLogin
-    if (!isLogin) {
-      this.props.navigator.push({
-        title: '登陆',
-        component: Login
-      })
-    }
-    return isLogin
-  }
-
-  // 回调
-  onButtonChanged() {
-    this.setState({isLogin: false})
-    AsyncStorage.removeItem('user', (err)=> {
-      if (err) {
-        console.log('登出失败');
-      }
-    })
+  componentDidMount() {
+    this.updateUser()
   }
 
   componentWillReceiveProps() {
-    console.log('componentWillReceiveProps');
-    var user = AsyncStorage.getItem('user', (err, result)=> {
-      if (err) {
-        console.log('mine:' + err);
-        return ;
-      }
-      if (result) {
-        this.setState({isLogin: true})
-        var user = JSON.parse(result)
-        this.setState({user: user})
-      } else {
-        this.setState({isLogin: false })
-        this.setState({user: {}})
-      }
-    })
+    console.log('aaaaa');
+    this.updateUser()
   }
 
-  // <SureButton
-  //   style={{marginBottom: 64}}
-  //   content={content}
-  //   updateChange={this.onButtonChanged}
-  //   verify={this.verify.bind(this)}
-  //   params={{
-  //     uid: this.state.user.uid,
-  //     verify: this.state.verify,
-  //     inf: this.state.inf
-  //   }}/>
+  updateUser() {
+    if (Global.user && Global.user.sid) {
+      this.setState({
+        isLogin: true,
+        user: Global.user,
+        content: Global.user.name
+      })
+    } else {
+      this.setState({
+        isLogin: false,
+        user: {},
+        content: '请登陆'
+      })
+    }
+  }
+
   render() {
-    var content = this.state.isLogin ? '退出登陆' : '登陆'
     return (
       <View style={{flex: 1, backgroundColor: '#F1F2F3'}}>
           <View style={styles.main}>
             <Image source={require('image!default_icon')} style={styles.image} />
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <Text style={styles.name}>
-                { this.state.isLogin ? this.state.user.name : '请登陆' }
+              <Text style={styles.name} onPress={this.goAccount.bind(this)}>
+                { this.state.content }
               </Text>
             </View>
             <View style={{justifyContent: 'center', alignItems: 'flex-end', flex: 1}}>
@@ -93,9 +70,37 @@ class Mine extends Component {
             content='我的收藏'
             imageName='collect'
             style={{marginTop: 10}}
+            num={0}
+            onPress={this.press.bind(this)}
             />
       </View>
     )
+  }
+
+  press(num) {
+    console.log(num);
+    var component = null
+    switch (num) {
+      case 0:
+        component = MyCollection
+        break;
+      default: break
+    }
+    this.props.navigator.push({
+      component: component
+    })
+  }
+
+  goAccount() {
+    var component = null
+    if (this.state.user && this.state.user.sid) {
+      component = Account
+    } else {
+      component = Login
+    }
+    this.props.navigator.push({
+      component: component
+    })
   }
 }
 

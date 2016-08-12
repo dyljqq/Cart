@@ -44,6 +44,12 @@ export default {
    logout: {
      url: PREFIX + 'v1/user/logout',
      type: 'post'
+   },
+   alterPassword: {
+     url: PREFIX + 'v1/user/alterPassword',
+   },
+   alterName: {
+     url: PREFIX + 'v1/user/alterName',
    }
  },
 

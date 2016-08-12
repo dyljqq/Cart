@@ -9,17 +9,20 @@ import {  AppRegistry,
           View,
           Navigator,
           Text,
-          TabBarIOS} from 'react-native'
+          TabBarIOS,
+          AsyncStorage} from 'react-native'
 import App from './src/views/App'
 import Navigation from './application/common/navigation.js'
 import Book from './application/book/book.js'
 import MusicList from './application/music/music.js'
 import MovieList from './application/movie/movie.js'
 import Mine from './application/mine/mine.js'
+import Global from './application/common/global.js'
 
 class AwesomeProject extends Component {
   constructor(props) {
     super(props)
+    this.loadData()
     this.state = {
       selectedTap: '图书'
     }
@@ -74,6 +77,18 @@ class AwesomeProject extends Component {
         </TabBarIOS.Item>
       </TabBarIOS>
     );
+  }
+
+  loadData() {
+    AsyncStorage.getItem('user', (err, result)=> {
+      if (err) {
+        console.log('mine:' + err);
+        return ;
+      }
+      if (result) {
+        Global.user = JSON.parse(result)
+      }
+    })
   }
 }
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject)
