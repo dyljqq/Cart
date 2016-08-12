@@ -1,3 +1,2 @@
-CardTab
-Red cell
-stockcell
+org.jboss.resteasy.spi.UnhandledException: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc) values('DYL English', 'Superfine, Wendy; West, Judy', 0.0, 0.0, 'https://i' at line 1
+15:23:39	insert into book(name, author, price, rate, image, desc) values('', '', 0, 0, '', '')	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc) values('', '', 0, 0, '', '')' at line 1	0.0050 sec

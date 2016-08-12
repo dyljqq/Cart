@@ -5,11 +5,14 @@ import { AppRegistry,
          TabBarIOS,
          StyleSheet,
          AsyncStorage,
-         TouchableOpacity} from 'react-native'
+         TouchableOpacity,
+         Image} from 'react-native'
 import Login from './login'
 import SureButton from '../weidget/sure-button.js'
 import * as Network from '../common/network.js'
 import Api from '../common/api.js'
+import Util from '../common/util.js'
+import SimpleItem from '../weidget/simple_item.js'
 
 class Mine extends Component {
   constructor(props) {
@@ -61,25 +64,36 @@ class Mine extends Component {
     })
   }
 
+  // <SureButton
+  //   style={{marginBottom: 64}}
+  //   content={content}
+  //   updateChange={this.onButtonChanged}
+  //   verify={this.verify.bind(this)}
+  //   params={{
+  //     uid: this.state.user.uid,
+  //     verify: this.state.verify,
+  //     inf: this.state.inf
+  //   }}/>
   render() {
     var content = this.state.isLogin ? '退出登陆' : '登陆'
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: '#F1F2F3'}}>
           <View style={styles.main}>
-            <Text>
-              { this.state.isLogin ? 'Login Successful' : 'Login' }
-            </Text>
+            <Image source={require('image!default_icon')} style={styles.image} />
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+              <Text style={styles.name}>
+                { this.state.isLogin ? this.state.user.name : '请登陆' }
+              </Text>
+            </View>
+            <View style={{justifyContent: 'center', alignItems: 'flex-end', flex: 1}}>
+              <Image source={require('image!back')} style={{marginRight: 15}}/>
+            </View>
           </View>
-          <SureButton
-            style={{marginBottom: 64}}
-            content={content}
-            updateChange={this.onButtonChanged}
-            verify={this.verify.bind(this)}
-            params={{
-              uid: this.state.user.uid,
-              verify: this.state.verify,
-              inf: this.state.inf
-            }}/>
+          <SimpleItem
+            content='我的收藏'
+            imageName='collect'
+            style={{marginTop: 10}}
+            />
       </View>
     )
   }
@@ -87,10 +101,17 @@ class Mine extends Component {
 
 var styles = {
   main: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 100
+    marginTop: 20,
+    height: 80,
+    flexDirection: 'row',
+    borderBottomWidth: Util.pixel,
+    borderTopWidth: Util.pixel,
+    borderColor: '#DDDDDD',
+    backgroundColor: 'white'
+  },
+  name: {
+    marginLeft: 10,
+    fontSize: 15
   },
   button_view: {
     flexDirection: 'row',
@@ -107,6 +128,16 @@ var styles = {
     textAlign:'center',
     color: 'white',
     fontSize: 20,
+  },
+  image: {
+    borderRadius: 3,
+    marginLeft: 15,
+    marginTop: 10,
+    marginBottom: 10
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 }
 

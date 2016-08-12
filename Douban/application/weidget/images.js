@@ -3,7 +3,8 @@ import {Image} from 'react-native'
 
 var Images = {
   phone: <Image source={require('image!phone')} />,
-  lock: <Image source={require('image!lock')} />
+  lock: <Image source={require('image!lock')} />,
+  collect: <Image source={require('image!collect')} />
 }
 
 var Images2x = {
