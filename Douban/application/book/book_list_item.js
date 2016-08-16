@@ -53,7 +53,7 @@ class BookListItem extends Component {
             <Text style={styles.title} numberOfLines={1}>{title}</Text>
           </View>
           <View style={{marginTop: 10}}>
-            <Text style={styles.info}>{info}</Text>
+            <Text style={styles.info} numberOfLines={1}>{info}</Text>
           </View>
           <View style={{marginTop: 10}}>
             <Text style={styles.rate} numberOfLines={1}>{rate}</Text>

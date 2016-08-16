@@ -31,19 +31,15 @@ export default {
   mine: {
    login: {
      url: PREFIX + 'v1/user/login',
-     type: 'post'
    },
    registe: {
      url: PREFIX + 'v1/user/register',
-     type: 'post'
    },
    forget_password: {
      url: PREFIX + 'v1/user/forgetPassword',
-     type: 'post'
    },
    logout: {
      url: PREFIX + 'v1/user/logout',
-     type: 'post'
    },
    alterPassword: {
      url: PREFIX + 'v1/user/alterPassword',

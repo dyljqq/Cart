@@ -67,7 +67,7 @@ class Mine extends Component {
             </View>
           </View>
           <SimpleItem
-            content='我的收藏'
+            content='我的图书'
             imageName='collect'
             style={{marginTop: 10}}
             num={0}

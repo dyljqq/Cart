@@ -12,14 +12,19 @@ import Util from '../common/util.js'
 export default class CollectionBookItem extends Component {
   render() {
     var row = this.props.row
+    var image = row.image != null ? row.image : ''
     return (
       <TouchableOpacity style={[styles.row, styles.item]} {...this.props}>
         <View style={styles.center}>
-          <Image source={{uri: row.image}} style={styles.book_image} />
+          {
+            row.image != null ?
+            <Image source={{uri: row.image}} style={styles.book_image} />
+            : <View style={{height: 100, width: 80}} />
+          }
         </View>
         <View style={styles.content}>
           <View>
-            <Text style={styles.title} numberOfLines={1}>书评: {row.name}</Text>
+            <Text style={styles.title} numberOfLines={1}>书名: {row.name}</Text>
           </View>
           <View style={{marginTop: 10}}>
             <Text style={styles.info}>作者: {row.author}</Text>

@@ -26,11 +26,7 @@ class Header extends Component {
           <Text style={[styles.font, styles.titlePos, {textAlign: 'center'}]} numberOfLines={1}>{obj.title}</Text>
         </View>
         {
-          this.props.showActionSheet ?
-          <View>
-            <ActionSheet data={this.props.data} />
-          </View>
-          : null
+          this.props.showRightItem ? this.props.rightItem : null
         }
       </View>
     )

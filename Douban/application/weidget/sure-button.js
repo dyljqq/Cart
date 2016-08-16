@@ -28,7 +28,7 @@ export default class SureButton extends Component {
     }
     // 注意作用域
     // var self = this
-    Network.post(api.inf.url, params, (code, message, data)=> {
+    Network.post(api.inf, params, (code, message, data)=> {
       if (code == 0) {
         this.props.updateChange(data)
       }else {

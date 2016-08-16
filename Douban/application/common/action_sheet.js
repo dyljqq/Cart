@@ -58,7 +58,8 @@ class ActionSheet extends Component {
       'price': price,
       'rate': row.rating.average ? row.rating.average : 0,
       'image': row.image,
-      'desc': ''
+      'desc': '',
+      'type': 0,
     }
     Network.post(url, map, (code, message, data)=> {
       if (code == 0) {

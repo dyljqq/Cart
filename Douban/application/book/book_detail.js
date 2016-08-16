@@ -12,6 +12,7 @@ import Util from '../common/util.js'
 import Header from '../common/header.js'
 import Api from '../common/api.js'
 import * as Network from '../common/network.js'
+import ActionSheet from '../common/action_sheet.js'
 
 class BookDetail extends Component {
   constructor(props) {
@@ -26,11 +27,12 @@ class BookDetail extends Component {
       <View style={{flex: 1, backgroundColor: '#F1F2F3'}}>
         <Header
           navigator={this.props.navigator}
-          data={this.state.data}
-          showActionSheet={true}
-          obj={{backName: '图书',
+          showRightItem={true}
+          obj={{
+                backName: '图书',
                 title: this.state.data ? this.state.data.title : ''
-              }} />
+              }}
+          rightItem={<ActionSheet data={this.state.data} />} />
         <ScrollView style={{flex: 1}}>
         {
           this.state.data ?
