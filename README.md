@@ -8,8 +8,12 @@
 
 ####屏幕截图
 
-![](ScreenShot/1.png =100x190) ![](ScreenShot/2.png =100x190) ![](ScreenShot/3.png =100x190)
+<img src="https://github.com/dyljqq/Cart/raw/master/ScreenShot/1.png" width="100" height="100"/> 
+<img src="https://github.com/dyljqq/Cart/raw/master/ScreenShot/2.png" width="100" height="100"/> 
+<img src="https://github.com/dyljqq/Cart/raw/master/ScreenShot/3.png" width="100" height="100"/>
 
-![](ScreenShot/4.png =100x190) ![](ScreenShot/5.png =100x190) ![](ScreenShot/6.png =100x190)
+<img src="https://github.com/dyljqq/Cart/raw/master/ScreenShot/4.png" width="100" height="100"/> 
+<img src="https://github.com/dyljqq/Cart/raw/master/ScreenShot/5.png" width="100" height="100"/> 
+<img src="https://github.com/dyljqq/Cart/raw/master/ScreenShot/6.png" width="100" height="100"/>
 
 ...最后一张图是因为阿里云上的mysql被我老板给血洗了。。。所以访问不了
